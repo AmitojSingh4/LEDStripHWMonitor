@@ -1,10 +1,14 @@
 const regedit = require('regedit').promisified
 
-async function main() {
-    const listResult = await regedit.list('HKCU\\SOFTWARE\\HWiNFO64\\VSB')
-    console.log(listResult)
+async function getData() {
+    return await regedit.list('HKCU\\SOFTWARE\\HWiNFO64\\VSB')
 }
 
-main()
+Bun.serve({
+    async fetch(req) {
+        return Response.json(await getData());
+    },
+});
 
 //reg query HKEY_CURRENT_USER\SOFTWARE\HWiNFO64\VSB
+//http://localhost:3000/
