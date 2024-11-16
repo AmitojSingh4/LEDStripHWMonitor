@@ -76,4 +76,3 @@ while(True): # Turns on and refreshes all leds forever
     activateLED(2)
     activateLED(3)
     time.sleep(0.1)
-
